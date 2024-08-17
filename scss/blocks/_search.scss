@@ -1,0 +1,101 @@
+.search {
+    width: 100%;
+    padding: 0 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__content {
+        width: 100%;
+        max-width: 960px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__label {
+        color: #444;
+        font-size: 24px;
+        line-height: 24px;
+    }
+
+
+}
+
+.resource-form {
+    margin-top: 50px;
+}
+
+.resources {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+
+    @media (max-width: 900px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 586px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    &__item {
+        border: 3px solid #e6e8ee;
+        min-height: 296px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__body {
+        @include adaptiveValue('padding', 20px, 15px);
+    }
+
+    &__title {
+        font-size: 20px;
+        color: #252061;
+    }
+
+    &__list {
+        margin-top: 15px;
+        li {
+            position: relative;
+            padding-left: 20px;
+            list-style: none;
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                min-width: 15px;
+                width: 15px;
+                height: 15px;
+                background: url(imagePath("resources", "file.svg")) no-repeat center center;
+                background-size: contain;
+            }
+
+            a {
+                text-transform: capitalize;
+                color: $orange;
+                &:hover {
+                    color: $green;
+                }
+            }
+
+            &:not(:last-child) {
+                margin-bottom: 15px;
+            }
+        }
+    }
+
+    &__all {
+        display: block;
+        width: 100%;
+        padding: 15px 20px;
+        background-color: #e6e8ee;
+        text-transform: capitalize;
+        color: #252061;
+    }
+}

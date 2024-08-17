@@ -1,0 +1,237 @@
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    position: relative;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: white;
+    z-index: 10;
+    box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, .1);
+
+
+    &__content {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1230px;
+        padding: 0 20px;
+    }
+
+    &__logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 0;
+        z-index: 10;
+
+        @media (max-width:586px) {
+            transform: none;
+            left: auto;
+            right: 0;
+        }
+
+        img {
+            @media (max-width:586px) {
+                height: 80px;
+            }
+
+        }
+
+    }
+
+    &__link:not(:last-child) {
+        padding-right: 15px;
+    }
+
+    &__nav {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        flex-wrap: wrap;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+
+        @media (max-width: 1200px) {
+            transform: translateY(-100%); // Початкове позиціювання за межами екрану
+            opacity: 0;
+        }
+    }
+
+    &__link {
+        &--home {
+            transition-duration: $transitionDuration;
+
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
+
+    }
+
+    // BURGER ====================================
+
+    .header__burger {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        min-width: 40px;
+        height: 25px;
+        z-index: 10;
+        cursor: pointer;
+        position: relative;
+
+        @media (max-width: 1200px) {
+            display: flex;
+        }
+
+        &.active {
+            .burger__line {
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                background-color: $fontColor;
+                transition: all 0.3s ease;
+            }
+
+            .burger__line:nth-child(1) {
+                transform: rotate(45deg);
+                top: 50%;
+                transform-origin: center;
+                margin-top: -1px; // Коригуємо вертикальне вирівнювання
+            }
+
+            .burger__line:nth-child(2) {
+                opacity: 0;
+            }
+
+            .burger__line:nth-child(3) {
+                transform: rotate(-45deg);
+                top: 50%;
+                transform-origin: center;
+                margin-top: -1px; // Коригуємо вертикальне вирівнювання
+            }
+        }
+    }
+
+    .burger__line {
+        width: 100%;
+        height: 2px;
+        background-color: $fontColor;
+        transition: all 0.3s ease;
+    }
+
+    .header__nav.active {
+        transform: translateY(0); // Повертаємо меню на видиме місце
+        opacity: 1; // Змінюємо непрозорість на 1
+        display: flex; // Додаємо display: flex, щоб меню відображалося
+        width: 100%;
+        height: 100vh;
+        flex-direction: column;
+        gap: 30px;
+        background-color: white;
+        z-index: 1;
+        position: fixed; // Додаємо fixed, щоб меню займало всю висоту екрану
+        top: 0;
+        left: 0;
+        padding-top: 150px; // Відступ, щоб меню не перекривало контент
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); // Додаємо тінь для виділення меню
+        overflow-y: auto; // Додаємо скролл, якщо пункти меню не вміщаються
+        transition: transform 0.3s ease, opacity 0.3s ease; // Додаємо transition для плавного виїзду
+
+    }
+
+    // BURGER ====================================
+
+}
+
+// header - search =====================
+
+.search-form {
+    display: flex;
+    max-width: 390px;
+    height: 42px;
+
+    &__form {
+        display: flex;
+        max-width: 390px;
+        height: 42px;
+        position: relative;
+    }
+
+    &__input {
+        width: 254px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 50px;
+        border-bottom-left-radius: 3px;
+        border-top-left-radius: 3px;
+        border: 1px solid #E0E0E0;
+
+        &::placeholder {
+            color: #E0E0E0;
+            transition: opacity 0.3s ease;
+        }
+
+        &:focus::placeholder {
+            opacity: 0;
+        }
+
+        &:focus {
+            border: 1px solid #E0E0E0;
+            outline: none;
+        }
+
+        @media (max-width: 400px) {
+            width: auto;
+        }
+    }
+
+    &__button {
+        width: 137px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #B8BDC9;
+        outline: 0;
+        border: 1px solid #B8BDC9;
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+        color: #E0E0E0;
+        cursor: pointer;
+        transition-duration: $transitionDuration;
+
+        @media (max-width: 400px) {
+            width: 100px;
+        }
+    }
+
+    &__button:hover {
+        background-color: $orange;
+    }
+
+    &__icon {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        transition: opacity 0.3s ease;
+
+        img {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    &__input:focus+&__icon {
+        opacity: 0;
+    }
+}
+
+// header - search =====================
